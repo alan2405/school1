@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body style="background-color:blue;">
+<form action="{% url 'storeapp:login' %}" method="post">
+  {% csrf_token %}
+    <a href="{% url 'storeapp:home' %}" class="btn btn-primary">Home</a><br><br>
+   <input type="text" name="username" placeholder="Enter your username"><br>
+   <input type="password" name="password" placeholder="Enter your password"><br>
+    <input type="password" name="confirm password" placeholder="Reenter your password"><br>
+   <input type="submit">
+
+</from>
+{% for msg in messages %}
+<h2>{{msg}}<h2></h2>
+{% endfor %}
+
+</body>
+</html>

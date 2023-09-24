@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height=60px; width=100px"  xmlns="http://www.w3.org/1999/html">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <!--<a class="nav-link" href="">Register</a>-->
+        <a href="{% url 'storeapp:register' %}" class=" btn btn-primary">Register</a>
+      </li>
+      <li class="nav-item">
+        <a href="{% url 'storeapp:login' %}" class="btn btn-success">Login</a>
+        <!--<a class="nav-link" href="">Login</a>-->
+      </li>
+      <li class="nav-item dropdown {% if 'shop' in request.path %} active {% endif %}">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Departments</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Computer_science"> Computer Science</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Commerce"> Commerce</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Humanities"> Humanities</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Biology"> Biology</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Technical Science"> Technical Science</a></li>
+              {% for cat in links %}
+          <li><a class="dropdown-item" href=""></a></li>
+          {% endfor %}
+
+
+        </ul>
+      </li>
+      {% if item_count > 0 %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="fa-solid fa-cart-shopping"></i>({{item_count}})</a>
+      </li>
+      {% endif %}
+    <form class="d-flex" action="" method="get" style="margin-left:250px;">
+      {% csrf_token %}
+    </form>
+  </div>
+  </div>
+</nav>
